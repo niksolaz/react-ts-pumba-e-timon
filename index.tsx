@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import Hello from "./Hello";
+import Content from "./Content";
 import "./style.css";
 
 interface AppProps {}
 interface AppState {
   name: string;
+  personName: string;
+  personSurname: string;
 }
 
-class App extends Component<AppProps, AppState> {
+interface Person {}
+
+class App extends Component<AppProps, AppState, Person> {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Tymon"
+      name: "Tymon",
+      personName: "John",
+      personSurname: "Doe"
     };
   }
 
@@ -20,7 +27,10 @@ class App extends Component<AppProps, AppState> {
     return (
       <div>
         <Hello name={this.state.name} />
-        <p>Start editing to see some magic happen :)</p>
+        <Content
+          nome={this.state.personName}
+          cognome={this.state.personSurname}
+        />
       </div>
     );
   }
